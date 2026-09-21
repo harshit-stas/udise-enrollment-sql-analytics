@@ -24,10 +24,11 @@ two dimension tables (`states`, `districts`), and one long-format fact
 table (`enrolment_fact`) built by unpivoting 24 wide class/gender columns
 into rows.
 
+```
 states ──┐
-├──> districts ──> enrolment_fact
-(37 rows) (755 rows) (5,334,864 rows)
-
+         ├──> districts ──> enrolment_fact
+         (37 rows)  (755 rows)   (5,334,864 rows)
+```
 
 See `schema.sql` for full DDL.
 
@@ -96,13 +97,14 @@ See `q3_gender_ratio_trend.sql`.
 
 ## Repo structure
 
-schema.sql — table definitions
-load_and_clean.sql — data cleaning (state/district name fixes)
-unpivot.sql — wide-to-long transformation into enrolment_fact
-q1_decline_streaks.sql — 3-year decline analysis
+```
+schema.sql               — table definitions
+load_and_clean.sql       — data cleaning (state/district name fixes)
+unpivot.sql               — wide-to-long transformation into enrolment_fact
+q1_decline_streaks.sql   — 3-year decline analysis
 q2_district_rankings.sql — within-state enrollment ranking
 q3_gender_ratio_trend.sql — gender ratio trend analysis
-
+```
 
 ## Running this yourself
 
@@ -111,11 +113,3 @@ q3_gender_ratio_trend.sql — gender ratio trend analysis
    using `\copy` in `psql`.
 3. Run `load_and_clean.sql`, then `unpivot.sql`.
 4. Run any of the three business-question files.
-EOF
-
-Then commit and push it:
-
-bash
-git add README.md
-git commit -m "Add README with findings, schema overview, and data cleaning notes"
-git push
